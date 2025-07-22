@@ -408,10 +408,10 @@ int main(int argc, char* argv[]) {
     loadNoodleTexture(renderer);
     loadLifeTexture(renderer); // Charger la texture des coeurs
 
-    backgroundTexture = loadTexture(renderer, "assets/map_1.png");
     if (currentLevel == 2) {
-        SDL_DestroyTexture(backgroundTexture);
         backgroundTexture = loadTexture(renderer, "assets/map_2.png");
+    } else {
+        backgroundTexture = loadTexture(renderer, "assets/map_1.png");
     }
     loadMenuTexture(renderer);
     deathTexture = loadTexture(renderer, "assets/mort.png");
