@@ -39,6 +39,7 @@ void updatePacman();
 void loadMenuTexture(SDL_Renderer* renderer);
 void updateEnemies();
 SDL_Texture* loadTexture(SDL_Renderer* renderer, const char* filePath);
+void loadBackgroundForLevel(SDL_Renderer* renderer, int level);
 bool checkCollision(Enemy* enemy, Pacman* pacman);
 bool isSpawningOnBarrier(int x, int y, int size);
 void initEnemies(bool* gameOver);
@@ -203,6 +204,21 @@ SDL_Texture* loadTexture(SDL_Renderer* renderer, const char* filePath) {
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, tempSurface);
     SDL_FreeSurface(tempSurface);
     return texture;
+}
+
+void loadBackgroundForLevel(SDL_Renderer* renderer, int level) {
+    if (backgroundTexture != NULL) {
+        SDL_DestroyTexture(backgroundTexture);
+        backgroundTexture = NULL;
+    }
+
+    if (level == 1) {
+        backgroundTexture = loadTexture(renderer, "assets/map_1.png");
+    } else if (level == 2) {
+        backgroundTexture = loadTexture(renderer, "assets/map_2.png");
+    } else if (level == 3) {
+        backgroundTexture = loadTexture(renderer, "assets/map_3.png");
+    }
 }
 
 bool canMove(Enemy* enemy, int dx, int dy) {
@@ -424,6 +440,7 @@ int main(int argc, char* argv[]) {
     initLevel(currentLevel);
     initEnemies(&gameOver);
     initNoodles();
+    loadBackgroundForLevel(renderer, currentLevel);
 
     bool running = true;
     SDL_Event event;
@@ -447,12 +464,13 @@ int main(int argc, char* argv[]) {
                         gameWon = false;
                     }
                 } else if (event.button.button == SDL_BUTTON_RIGHT) {
-                    // Passer au niveau 2
-                    if (gameWon) {
-                        currentLevel = 2;
+                    // Passer au niveau suivant
+                    if (gameWon && currentLevel < 3) {
+                        currentLevel++;
                         initLevel(currentLevel);
                         initEnemies(&gameOver);
                         initNoodles();
+                        loadBackgroundForLevel(renderer, currentLevel);
                         pacmanSingle.lives = MAX_LIVES;
                         gameOver = false;
                         gameWon = false;
@@ -471,10 +489,8 @@ int main(int argc, char* argv[]) {
             updatePacman();
             updateEnemies();
             checkNoodleCollision();
-
             if (allNoodlesCollected()) {
                 gameWon = true;
-                printf("Félicitations ! Vous avez récupéré toutes les nouilles !\n");
             }
 
             for (int i = 0; i < NUM_ENEMIES; i++) {
@@ -539,15 +555,6 @@ int main(int argc, char* argv[]) {
             SDL_RenderCopy(renderer, deathTexture, NULL, NULL);
         } else if (gameWon) {
             SDL_RenderCopy(renderer, winTexture, NULL, NULL);
-        }
-        else if (currentLevel == 2 && gameWon) {
-            currentLevel = 3;
-            initLevel(currentLevel);
-            initEnemies(&gameOver);
-            initNoodles();
-            pacmanSingle.lives = MAX_LIVES;
-            gameOver = false;
-            gameWon = false;
         }
 
         SDL_RenderPresent(renderer);

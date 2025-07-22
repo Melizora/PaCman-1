@@ -1,4 +1,7 @@
 #include "barrieres.h"
+#include "barrieres.h"
+
+void initLevel2Barriers();
 
 // Définition du tableau des barrières.
 Barrier barriers[MAX_BARRIERS];
@@ -240,106 +243,7 @@ void initLevel(int level) {
     if (level == 1) {
         initBarriers();
     } else if (level == 2) {
-        // HORIZONTALES
-        barriers[44].x = 130;
-        barriers[44].y = 160;
-        barriers[44].width = 40;
-        barriers[44].height = 8;    // Clôture horizontale gauche
-
-        barriers[45].x = 130;
-        barriers[45].y = 270;
-        barriers[45].width = 40;
-        barriers[45].height = 8;    // Clôture horizontale gauche bas
-
-        barriers[46].x = 440;
-        barriers[46].y = 150;
-        barriers[46].width = 40;
-        barriers[46].height = 8;    // Clôture horizontale droite haut
-
-        barriers[47].x = 390;
-        barriers[47].y = 250;
-        barriers[47].width = 40;
-        barriers[47].height = 8;    // Clôture horizontale droite milieu
-
-        barriers[4].x = 390;
-        barriers[4].y = 310;
-        barriers[4].width = 40;
-        barriers[4].height = 8;    // Clôture horizontale droite bas
-
-        // VERTICALES
-        barriers[5].x = 150;
-        barriers[5].y = 100;
-        barriers[5].width = 8;
-        barriers[5].height = 70;   // Clôture verticale gauche haut
-
-        barriers[6].x = 150;
-        barriers[6].y = 200;
-        barriers[6].width = 8;
-        barriers[6].height = 100;  // Clôture verticale gauche milieu
-
-        barriers[7].x = 150;
-        barriers[7].y = 320;
-        barriers[7].width = 8;
-        barriers[7].height = 50;   // Clôture verticale gauche bas
-
-        barriers[8].x = 410;
-        barriers[8].y = 100;
-        barriers[8].width = 8;
-        barriers[8].height = 130;  // Clôture verticale droite
-
-        // ARBRES & BORDURES
-        barriers[9].x = 60;
-        barriers[9].y = 480;
-        barriers[9].width = 40;
-        barriers[9].height = 60;   // Arbre gauche bas
-
-        barriers[10].x = 115;
-        barriers[10].y = 490;
-        barriers[10].width = 45;
-        barriers[10].height = 60;  // Arbre à droite du précédent
-
-        barriers[11].x = 530;
-        barriers[11].y = 20;
-        barriers[11].width = 55;
-        barriers[11].height = 55;  // Arbre haut droite
-
-        // ROCHERS
-        barriers[12].x = 610;
-        barriers[12].y = 270;
-        barriers[12].width = 25;
-        barriers[12].height = 25;  // Grosse pierre
-
-        barriers[13].x = 650;
-        barriers[13].y = 290;
-        barriers[13].width = 15;
-        barriers[13].height = 15;  // Petite pierre
-
-        // ÉTANG AU CENTRE
-        barriers[14].x = 308;
-        barriers[14].y = 1;
-        barriers[14].width = 28;
-        barriers[14].height = 80;  // Étang central vertical
-
-        // BORDS GAUCHE & DROITE
-        barriers[15].x = 0;
-        barriers[15].y = 0;
-        barriers[15].width = 110;
-        barriers[15].height = 500;  // Bord gauche eau
-
-        barriers[16].x = 590;
-        barriers[16].y = 0;
-        barriers[16].width = 120;
-        barriers[16].height = 600;  // Bord droit eau
-
-        barriers[17].x = 0;
-        barriers[17].y = 595;
-        barriers[17].width = 700;
-        barriers[17].height = 200;   // Barrière horizontale tout en bas
-    
-        barriers[18].x = 0;
-        barriers[18].y = 600;
-        barriers[18].width = 900;
-        barriers[18].height = 300;   
+        initLevel2Barriers();
     }
 }
 
@@ -349,4 +253,97 @@ void drawBarriers(SDL_Renderer* renderer) {
         SDL_Rect rect = {barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height};
         SDL_RenderFillRect(renderer, &rect);
     }
+}
+
+void initLevel2Barriers() {
+    // HORIZONTALES
+    barriers[44].x = 130;
+    barriers[44].y = 160;
+    barriers[44].width = 40;
+    barriers[44].height = 8;
+
+    barriers[45].x = 130;
+    barriers[45].y = 270;
+    barriers[45].width = 40;
+    barriers[45].height = 8;
+
+    barriers[46].x = 440;
+    barriers[46].y = 150;
+    barriers[46].width = 40;
+    barriers[46].height = 8;
+
+    barriers[47].x = 390;
+    barriers[47].y = 250;
+    barriers[47].width = 40;
+    barriers[47].height = 8;
+
+    barriers[48].x = 390;
+    barriers[48].y = 310;
+    barriers[48].width = 40;
+    barriers[48].height = 8;
+
+    // VERTICALES
+    barriers[49].x = 150;
+    barriers[49].y = 100;
+    barriers[49].width = 8;
+    barriers[49].height = 70;
+
+    barriers[50].x = 150;
+    barriers[50].y = 200;
+    barriers[50].width = 8;
+    barriers[50].height = 100;
+
+    barriers[51].x = 150;
+    barriers[51].y = 320;
+    barriers[51].width = 8;
+    barriers[51].height = 50;
+
+    barriers[52].x = 410;
+    barriers[52].y = 100;
+    barriers[52].width = 8;
+    barriers[52].height = 130;
+
+    // ARBRES & BORDURES
+    barriers[53].x = 60;
+    barriers[53].y = 480;
+    barriers[53].width = 40;
+    barriers[53].height = 60;
+
+    barriers[54].x = 115;
+    barriers[54].y = 490;
+    barriers[54].width = 45;
+    barriers[54].height = 60;
+
+    barriers[55].x = 530;
+    barriers[55].y = 20;
+    barriers[55].width = 55;
+    barriers[55].height = 55;
+
+    // ROCHERS
+    barriers[56].x = 610;
+    barriers[56].y = 270;
+    barriers[56].width = 25;
+    barriers[56].height = 25;
+
+    barriers[57].x = 650;
+    barriers[57].y = 290;
+    barriers[57].width = 15;
+    barriers[57].height = 15;
+
+    // ÉTANG AU CENTRE
+    barriers[58].x = 308;
+    barriers[58].y = 1;
+    barriers[58].width = 28;
+    barriers[58].height = 80;
+
+    // BORDS GAUCHE & DROITE
+    barriers[59].x = 0;
+    barriers[59].y = 0;
+    barriers[59].width = 110;
+    barriers[59].height = 500;
+
+    barriers[60].x = 590;
+    barriers[60].y = 0;
+    barriers[60].width = 120;
+    barriers[60].height = 600;
 }

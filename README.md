@@ -1,4 +1,4 @@
-## 🎮 Lancer Giblixel sur Mac
+## Lancer Giblixel sur Mac
 
 ### 1. Installer Homebrew (si ce n’est pas déjà fait)
 
