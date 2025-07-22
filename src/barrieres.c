@@ -267,7 +267,7 @@ void initLevel(int level) {
 }
 
 void drawBarriers(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
     for (int i = 0; i < MAX_BARRIERS; i++) {
         SDL_Rect rect = {barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height};
         SDL_RenderFillRect(renderer, &rect);

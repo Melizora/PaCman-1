@@ -14,7 +14,6 @@
 #define ENEMY_SPEED 1.5
 #define NUM_ENEMIES 6
 #define NUM_PACMANS 1
-#define MAX_BARRIERS 50
 #define MAX_BAR_WIDTH 20
 #define MAX_BAR_HEIGHT 50
 #define NUM_NOODLES 4
@@ -28,9 +27,6 @@ typedef struct {
     int x, y, dx, dy;
 } Enemy;
 
-typedef struct {
-    int x, y, width, height;
-} Barrier;
 
 typedef struct {
     int x, y;
@@ -38,7 +34,6 @@ typedef struct {
 } Noodle;
 
 // Déclaration des fonctions
-void initBarriers();
 void handleInput(SDL_Event event);
 void updatePacman();
 void loadMenuTexture(SDL_Renderer* renderer);
@@ -54,7 +49,6 @@ void loadNoodleTexture(SDL_Renderer* renderer);
 void renderNoodles(SDL_Renderer* renderer);
 void checkNoodleCollision();
 bool allNoodlesCollected();
-void initLevel(int level);
 void renderLives(SDL_Renderer* renderer);
 
 // Variables globales
@@ -500,13 +494,7 @@ int main(int argc, char* argv[]) {
 
         SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
 
-        // Affichage des barrières
-        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0); // Rendre les barrières transparentes
-        for (int i = 0; i < MAX_BARRIERS; i++) {
-            SDL_Rect barrierRect = { barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height };
-            SDL_RenderFillRect(renderer, &barrierRect);
-        }
+        drawBarriers(renderer);
 
         renderNoodles(renderer);
 
