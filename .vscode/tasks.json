@@ -1,16 +1,24 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: clang générer le fichier actif",
-            "command": "/usr/bin/clang",
+            "label": "Build Pacman avec SDL2",
+            "type": "shell",
+            "command": "bash",
             "args": [
-                "-fcolor-diagnostics",
-                "-fansi-escape-codes",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "-c",
+                "gcc main.c src/barrieres.c -o pacman -I/opt/homebrew/include/SDL2 -L/opt/homebrew/lib -lSDL2 -lSDL2_image"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: clang générer le fichier actif",
+            "command": "bash",
+            "args": [
+                "-c",
+                "gcc main.c src/barrieres.c -o pacman -I/opt/homebrew/include/SDL2 -L/opt/homebrew/lib -lSDL2 -lSDL2_image"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -23,7 +31,17 @@
                 "isDefault": true
             },
             "detail": "Tâche générée par le débogueur."
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: build",
+            "command": "build",
+            "targets": [
+                "all"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Tâche build de modèle CMake"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

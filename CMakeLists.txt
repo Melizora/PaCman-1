@@ -19,7 +19,7 @@ if(WIN32)
 endif()
 
 # Add the executable
-add_executable(pacman main.c src/eventHandler.c)
+add_executable(pacman main.c src/eventHandler.c src/barrieres.c)
 
 if(WIN32)
     # Include the SDL2 headers and link the libraries for Windows
