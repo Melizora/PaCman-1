@@ -71,7 +71,7 @@ SDL_Texture* menuTexture = NULL;
 SDL_Texture* deathTexture = NULL;
 SDL_Texture* winTexture = NULL;
 SDL_Texture* lifeTexture = NULL; // Texture pour les vies (coeurs)
-int currentLevel = 1; // Niveau actuel
+int currentLevel = 2; // Niveau actuel (test direct niveau 2)
 
 // Fonction pour charger les textures de Pacman
 void loadPacmanTextures(SDL_Renderer* renderer) {
@@ -409,6 +409,10 @@ int main(int argc, char* argv[]) {
     loadLifeTexture(renderer); // Charger la texture des coeurs
 
     backgroundTexture = loadTexture(renderer, "assets/map_1.png");
+    if (currentLevel == 2) {
+        SDL_DestroyTexture(backgroundTexture);
+        backgroundTexture = loadTexture(renderer, "assets/map_2.png");
+    }
     loadMenuTexture(renderer);
     deathTexture = loadTexture(renderer, "assets/mort.png");
     winTexture = loadTexture(renderer, "assets/victoire.png");

@@ -234,35 +234,41 @@ void initLevel(int level) {
     if (level == 1) {
         initBarriers();
     } else if (level == 2) {
-        barriers[0].x = 50;
-        barriers[0].y = 50;
-        barriers[0].width = 50;
-        barriers[0].height = 400;
+        // Barrières en fonction de la map_2.png (eau, arbres, clôtures, rochers)
+        barriers[0] = (Barrier){ .x = 0, .y = 0, .width = 110, .height = 600 };    // gauche eau
+        barriers[1] = (Barrier){ .x = 595, .y = 0, .width = 110, .height = 600 };  // droite eau
 
-        barriers[1].x = 150;
-        barriers[1].y = 50;
-        barriers[1].width = 50;
-        barriers[1].height = 400;
+        // Arbres en bas gauche
+        barriers[2] = (Barrier){ .x = 60, .y = 480, .width = 60, .height = 60 };
+        barriers[3] = (Barrier){ .x = 115, .y = 490, .width = 45, .height = 60 };
 
-        barriers[2].x = 250;
-        barriers[2].y = 50;
-        barriers[2].width = 50;
-        barriers[2].height = 400;
+        // Arbre en haut droite
+        barriers[4] = (Barrier){ .x = 530, .y = 20, .width = 60, .height = 60 };
 
-        barriers[3].x = 350;
-        barriers[3].y = 50;
-        barriers[3].width = 50;
-        barriers[3].height = 400;
+        // Clôtures verticales (gauche)
+        barriers[5] = (Barrier){ .x = 150, .y = 100, .width = 10, .height = 70 };
+        barriers[6] = (Barrier){ .x = 150, .y = 200, .width = 10, .height = 100 };
+        barriers[7] = (Barrier){ .x = 150, .y = 320, .width = 10, .height = 50 };
 
-        barriers[4].x = 450;
-        barriers[4].y = 50;
-        barriers[4].width = 50;
-        barriers[4].height = 400;
+        // Clôtures horizontales (gauche)
+        barriers[8] = (Barrier){ .x = 130, .y = 160, .width = 40, .height = 10 };
+        barriers[9] = (Barrier){ .x = 130, .y = 270, .width = 40, .height = 10 };
 
-        barriers[5].x = 550;
-        barriers[5].y = 50;
-        barriers[5].width = 50;
-        barriers[5].height = 400;
+        // Clôtures verticales (droite)
+        barriers[10] = (Barrier){ .x = 410, .y = 100, .width = 10, .height = 130 };
+
+        // Clôtures horizontales (droite)
+        barriers[11] = (Barrier){ .x = 440, .y = 150, .width = 40, .height = 10 };
+        barriers[12] = (Barrier){ .x = 390, .y = 250, .width = 40, .height = 10 };
+        barriers[13] = (Barrier){ .x = 390, .y = 310, .width = 40, .height = 10 };
+
+        // Rochers à droite
+        barriers[14] = (Barrier){ .x = 610, .y = 270, .width = 25, .height = 25 };
+        barriers[15] = (Barrier){ .x = 650, .y = 290, .width = 15, .height = 15 };
+
+        // Petit étang au centre
+        barriers[16] = (Barrier){ .x = 305, .y = 1, .width = 30, .height = 80 };
+
     }
 }
 
