@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 
-#define MAX_BARRIERS 50
+#define MAX_BARRIERS 44
 
 typedef struct {
     int x, y, width, height;
@@ -12,6 +12,7 @@ typedef struct {
 extern Barrier barriers[MAX_BARRIERS];
 
 void initBarriers();
+void initLevel(int level);
 void drawBarriers(SDL_Renderer* renderer);
 
 #endif // BARRIERES_H
