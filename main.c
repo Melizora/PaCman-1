@@ -16,7 +16,7 @@
 #define NUM_PACMANS 1
 #define MAX_BAR_WIDTH 20
 #define MAX_BAR_HEIGHT 50
-#define NUM_NOODLES 4
+#define NUM_NOODLES 6
 #define MAX_LIVES 5
 
 typedef struct {
@@ -71,7 +71,7 @@ SDL_Texture* menuTexture = NULL;
 SDL_Texture* deathTexture = NULL;
 SDL_Texture* winTexture = NULL;
 SDL_Texture* lifeTexture = NULL; // Texture pour les vies (coeurs)
-int currentLevel = 2; // Niveau actuel (test direct niveau 2)
+int currentLevel = 1; // Niveau actuel (défini par défaut à 1)
 
 // Fonction pour charger les textures de Pacman
 void loadPacmanTextures(SDL_Renderer* renderer) {
@@ -408,10 +408,12 @@ int main(int argc, char* argv[]) {
     loadNoodleTexture(renderer);
     loadLifeTexture(renderer); // Charger la texture des coeurs
 
-    if (currentLevel == 2) {
-        backgroundTexture = loadTexture(renderer, "assets/map_2.png");
-    } else {
+    if (currentLevel == 1) {
         backgroundTexture = loadTexture(renderer, "assets/map_1.png");
+    } else if (currentLevel == 2) {
+        backgroundTexture = loadTexture(renderer, "assets/map_2.png");
+    } else if (currentLevel == 3) {
+        backgroundTexture = loadTexture(renderer, "assets/map_3.png");
     }
     loadMenuTexture(renderer);
     deathTexture = loadTexture(renderer, "assets/mort.png");
@@ -537,6 +539,15 @@ int main(int argc, char* argv[]) {
             SDL_RenderCopy(renderer, deathTexture, NULL, NULL);
         } else if (gameWon) {
             SDL_RenderCopy(renderer, winTexture, NULL, NULL);
+        }
+        else if (currentLevel == 2 && gameWon) {
+            currentLevel = 3;
+            initLevel(currentLevel);
+            initEnemies(&gameOver);
+            initNoodles();
+            pacmanSingle.lives = MAX_LIVES;
+            gameOver = false;
+            gameWon = false;
         }
 
         SDL_RenderPresent(renderer);

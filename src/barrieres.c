@@ -241,25 +241,25 @@ void initLevel(int level) {
         initBarriers();
     } else if (level == 2) {
         // HORIZONTALES
-        barriers[0].x = 130;
-        barriers[0].y = 160;
-        barriers[0].width = 40;
-        barriers[0].height = 8;    // Clôture horizontale gauche
+        barriers[44].x = 130;
+        barriers[44].y = 160;
+        barriers[44].width = 40;
+        barriers[44].height = 8;    // Clôture horizontale gauche
 
-        barriers[1].x = 130;
-        barriers[1].y = 270;
-        barriers[1].width = 40;
-        barriers[1].height = 8;    // Clôture horizontale gauche bas
+        barriers[45].x = 130;
+        barriers[45].y = 270;
+        barriers[45].width = 40;
+        barriers[45].height = 8;    // Clôture horizontale gauche bas
 
-        barriers[2].x = 440;
-        barriers[2].y = 150;
-        barriers[2].width = 40;
-        barriers[2].height = 8;    // Clôture horizontale droite haut
+        barriers[46].x = 440;
+        barriers[46].y = 150;
+        barriers[46].width = 40;
+        barriers[46].height = 8;    // Clôture horizontale droite haut
 
-        barriers[3].x = 390;
-        barriers[3].y = 250;
-        barriers[3].width = 40;
-        barriers[3].height = 8;    // Clôture horizontale droite milieu
+        barriers[47].x = 390;
+        barriers[47].y = 250;
+        barriers[47].width = 40;
+        barriers[47].height = 8;    // Clôture horizontale droite milieu
 
         barriers[4].x = 390;
         barriers[4].y = 310;
@@ -335,6 +335,11 @@ void initLevel(int level) {
         barriers[17].y = 595;
         barriers[17].width = 700;
         barriers[17].height = 200;   // Barrière horizontale tout en bas
+    
+        barriers[18].x = 0;
+        barriers[18].y = 600;
+        barriers[18].width = 900;
+        barriers[18].height = 300;   
     }
 }
 
