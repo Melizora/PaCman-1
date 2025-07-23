@@ -3,7 +3,6 @@
 
 void initLevel2Barriers();
 
-// Définition du tableau des barrières.
 Barrier barriers[120];
 extern int currentLevel;
 
@@ -334,30 +333,40 @@ void initLevel2Barriers() {
     barriers[55].width = 55;
     barriers[55].height = 55;
 
-    barriers[57].x = 589;
-    barriers[57].y = 0;
-    barriers[57].width = 120;
-    barriers[57].height = 273;
+    barriers[56].x = 589;
+    barriers[56].y = 0;
+    barriers[56].width = 120;
+    barriers[56].height = 273;
 
-    barriers[58].x = 340;
-    barriers[58].y = 70;
-    barriers[58].width = 28;
-    barriers[58].height = 200;
+    barriers[57].x = 340;
+    barriers[57].y = 70;
+    barriers[57].width = 28;
+    barriers[57].height = 200;
 
     //Grosse barrière à gauche
-    barriers[59].x = 0;
+    barriers[58].x = 0;
+    barriers[58].y = 0;
+    barriers[58].width = 80;
+    barriers[58].height = 500;
+
+    barriers[59].x = 635;
     barriers[59].y = 0;
-    barriers[59].width = 80;
-    barriers[59].height = 500;
+    barriers[59].width = 120;
+    barriers[59].height = 600;
 
-    barriers[60].x = 635;
-    barriers[60].y = 0;
-    barriers[60].width = 120;
-    barriers[60].height = 600;
+    barriers[60].x = 440;
+    barriers[60].y = 292;
+    barriers[60].width = 40;
+    barriers[60].height = 110;
 
-    barriers[61].x = 358;
-    barriers[61].y = 500;
-    barriers[61].width = 120;
+    barriers[61].x = 0;
+    barriers[61].y = 419;
+    barriers[61].width = 700;
     barriers[61].height = 200;
+
+    barriers[62].x = 0;
+    barriers[62].y = 100;
+    barriers[62].width = 60;
+    barriers[62].height = 50;
     
 }
