@@ -53,7 +53,7 @@ bool allNoodlesCollected();
 void renderLives(SDL_Renderer* renderer);
 
 // Variables globales
-Pacman pacmanSingle = {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0, 0, MAX_LIVES};
+Pacman pacmanSingle = {WINDOW_WIDTH / 2, 300, 0, 0, MAX_LIVES};
 Pacman pacmans[NUM_PACMANS];
 Enemy enemies[NUM_ENEMIES];
 Noodle noodles[NUM_NOODLES];
@@ -72,7 +72,7 @@ SDL_Texture* menuTexture = NULL;
 SDL_Texture* deathTexture = NULL;
 SDL_Texture* winTexture = NULL;
 SDL_Texture* lifeTexture = NULL; // Texture pour les vies (coeurs)
-int currentLevel = 1; // définition unique de la variable globale niveau courant
+int currentLevel = 2; // définition unique de la variable globale niveau courant
 
 // Fonction pour charger les textures de Pacman
 void loadPacmanTextures(SDL_Renderer* renderer) {

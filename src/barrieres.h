@@ -3,13 +3,13 @@
 
 #include <SDL.h>
 
-#define MAX_BARRIERS 100
+#define MAX_BARRIERS 120
 
 typedef struct {
-    int x, y, width, height;
+    int x, y, width, height, color;
 } Barrier;
 
-extern Barrier barriers[100];
+extern Barrier barriers[120];
 
 void initBarriers();
 void initLevel(int level);
