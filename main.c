@@ -17,7 +17,7 @@
 #define MAX_BAR_WIDTH 20
 #define MAX_BAR_HEIGHT 50
 #define NUM_NOODLES 6
-#define MAX_LIVES 5
+#define MAX_LIVES 20
 
 typedef struct {
     int x, y, dx, dy, lives;
@@ -72,7 +72,7 @@ SDL_Texture* menuTexture = NULL;
 SDL_Texture* deathTexture = NULL;
 SDL_Texture* winTexture = NULL;
 SDL_Texture* lifeTexture = NULL; // Texture pour les vies (coeurs)
-int currentLevel = 1; // Niveau actuel (défini par défaut à 1)
+int currentLevel = 1; // définition unique de la variable globale niveau courant
 
 // Fonction pour charger les textures de Pacman
 void loadPacmanTextures(SDL_Renderer* renderer) {
@@ -438,6 +438,7 @@ int main(int argc, char* argv[]) {
     bool gameOver = false;
     bool gameWon = false;
     initLevel(currentLevel);
+
     initEnemies(&gameOver);
     initNoodles();
     loadBackgroundForLevel(renderer, currentLevel);

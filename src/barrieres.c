@@ -4,7 +4,8 @@
 void initLevel2Barriers();
 
 // Définition du tableau des barrières.
-Barrier barriers[MAX_BARRIERS];
+Barrier barriers[100];
+extern int currentLevel;
 
 void initBarriers() {
     // H
@@ -240,6 +241,7 @@ void initLevel(int level) {
         barriers[i].width = 0;
         barriers[i].height = 0;
     }
+    currentLevel = level;
     if (level == 1) {
         initBarriers();
     } else if (level == 2) {
@@ -248,10 +250,20 @@ void initLevel(int level) {
 }
 
 void drawBarriers(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 100, 149, 237, 255);
-    for (int i = 0; i < MAX_BARRIERS; i++) {
-        SDL_Rect rect = {barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height};
-        SDL_RenderFillRect(renderer, &rect);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    if (currentLevel == 1) {
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 100); // rouge semi-transparent
+        for (int i = 0; i <= 43; i++) {
+            SDL_Rect rect = {barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height};
+            SDL_RenderFillRect(renderer, &rect);
+        }
+    } else if (currentLevel == 2) {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0); // totalement transparent (non visible)
+        for (int i = 44; i <= 60; i++) {
+            SDL_Rect rect = {barriers[i].x, barriers[i].y, barriers[i].width, barriers[i].height};
+            SDL_RenderFillRect(renderer, &rect);
+        }
     }
 }
 
